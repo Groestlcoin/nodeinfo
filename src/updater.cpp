@@ -18,7 +18,7 @@
 QString callBitcoinRPC(const QString &cmd) {
     // call groestlcoin-cli
     QString groestlcoin_cli = QProcessEnvironment::systemEnvironment().value("GROESTLCOIN_CLI", "groestlcoin-cli");
-    QString groestlcoin_args = QProcessEnvironment::systemEnvironment().value("GROESTLCOIN_ARGS", "-regtest");
+    QString groestlcoin_args = QProcessEnvironment::systemEnvironment().value("GROESTLCOIN_ARGS", "");
     QString call = groestlcoin_cli + " " + groestlcoin_args + " " + cmd;
     qDebug() << "executing:" << call << endl;
     QProcess process;
