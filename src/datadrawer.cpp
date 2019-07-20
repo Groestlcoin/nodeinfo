@@ -131,7 +131,7 @@ void DataDrawerWidget::paintEvent(QPaintEvent *)
     cur_y+=key_height*1.5;
 
     if (m_updater->m_exchange_rate != 0) {
-        key_text = m_updater->m_exchange_rate_title_overwrite.isEmpty() ? "BTC/" + (m_updater->m_exchange_rate_currency_overwrite.isEmpty() ? "USD" : m_updater->m_exchange_rate_currency_overwrite) : m_updater->m_exchange_rate_title_overwrite;
+        key_text = m_updater->m_exchange_rate_title_overwrite.isEmpty() ? "GRS/" + (m_updater->m_exchange_rate_currency_overwrite.isEmpty() ? "USD" : m_updater->m_exchange_rate_currency_overwrite) : m_updater->m_exchange_rate_title_overwrite;
         key_width = m_font_bold_m.width(key_text);
         painter.setFont(m_font_bold);
         painter.drawText(window_border,cur_y, key_text);

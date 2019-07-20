@@ -16,14 +16,14 @@
 #include <QJsonArray>
 
 QString callBitcoinRPC(const QString &cmd) {
-    // call bitcoin-cli
-    QString bitcoin_cli = QProcessEnvironment::systemEnvironment().value("BITCOIN_CLI", "bitcoin-cli");
-    QString bitcoin_args = QProcessEnvironment::systemEnvironment().value("BITCOIN_ARGS", "-regtest");
-    QString call = bitcoin_cli + " " + bitcoin_args + " " + cmd;
+    // call groestlcoin-cli
+    QString groestlcoin_cli = QProcessEnvironment::systemEnvironment().value("GROESTLCOIN_CLI", "groestlcoin-cli");
+    QString groestlcoin_args = QProcessEnvironment::systemEnvironment().value("GROESTLCOIN_ARGS", "-regtest");
+    QString call = groestlcoin_cli + " " + groestlcoin_args + " " + cmd;
     qDebug() << "executing:" << call << endl;
     QProcess process;
     process.start(call);
-    process.waitForFinished(QProcessEnvironment::systemEnvironment().value("BITCOIN_RPC_TIMEOUT", "10000").toInt());
+    process.waitForFinished(QProcessEnvironment::systemEnvironment().value("GROESTLCOIN_RPC_TIMEOUT", "10000").toInt());
     return process.readAllStandardOutput();
 }
 bool DataUpdater::getBitcoinRPC(const QString &cmd, QVariantMap &mapOut) {
@@ -70,7 +70,7 @@ void DataUpdater::startUpdate() {
             m_bitcoin_verification_progress = map["verificationprogress"].toFloat();
             if (m_bitcoin_IBD) {
                 // during IBD, update every 5 seconds
-                // don't stress bitcoind too much
+                // don't stress groestlcoind too much
                 next_update = 5000;
             }
         }
